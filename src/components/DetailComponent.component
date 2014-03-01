@@ -1,0 +1,8 @@
+<apex:component >
+    <!--<apex:attribute name="Titles" description="These are the titles for the search results." type="String" required="true" />-->
+    <apex:attribute name="Links" description="These are the links for the search results." type="String[]" required="true"/>
+
+    <apex:repeat value="{!Links}" var="rt">
+        <apex:outputText value="{!Links}"/>
+   </apex:repeat>
+</apex:component>

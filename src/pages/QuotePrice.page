@@ -1,0 +1,100 @@
+<apex:page StandardController="Quote" sidebar="false" renderAs="pdf">
+<apex:form >
+<apex:pageBlock title="Eternus Solutions">
+<apex:pageBlockSection columns="2" >
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="Created Date:"/>
+<apex:OutputLabel value="{!Now()}"/>
+</apex:pageBlockSectionItem><br/>   
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="Expiration Date:"/>
+<apex:OutputLabel value="{!Quote.ExpirationDate}"/>
+</apex:pageBlockSectionItem><br/>  
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="Quote Number:"/>
+<apex:OutputLabel value="{!Quote.QuoteNumber}"/>
+</apex:pageBlockSectionItem><br/> 
+<br/> <br/> 
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="Prepared By:"/>
+<apex:OutputLabel value="{!$User.Alias}"/>
+</apex:pageBlockSectionItem><br/> 
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="E-mail:"/>
+<apex:OutputLabel value="{!$User.Email}"/>
+</apex:pageBlockSectionItem><br/> 
+</apex:pageBlockSection>           
+
+<br/> <br/> <br/>
+
+ <apex:pageBlockSection >
+ <apex:dataTable border="1" value="{!Quote.QuoteLineItems}" var="qli" style="font-size: 100%; " columnsWidth=" 200px, 150px, 150px, 150px, 150px ,100px ">
+ <apex:column >
+ <apex:facet name="header">Product Name</apex:facet><br/>
+<apex:outputText value="{!qli.PriceBookEntry.Product2.Name}"/>
+</apex:column>
+                
+<apex:column >
+<apex:facet name="header">Quantity</apex:facet><br/>    
+<apex:outputText value="{!qli.Quantity}"/ >
+</apex:column>          
+                 
+<apex:column >
+<apex:facet name="header">List Price</apex:facet><br/>
+<apex:outputText value="{!qli.ListPrice}"/>
+</apex:column>
+                
+<apex:column >
+<apex:facet name="header">TotalPrice</apex:facet><br/>
+<apex:outputText value="{!qli.TotalPrice}"/>
+</apex:column>
+</apex:dataTable>
+</apex:pageBlockSection>
+</apex:pageBlock>
+<br/> <br/> <br/> <br/> <br/>
+<apex:pageBlock >
+<apex:pageBlockSection >
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="SubTotal:"/>
+<apex:OutputLabel value="{!Quote.Subtotal}"/>
+</apex:pageBlockSectionItem><br/> 
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="Discount:"/>
+<apex:OutputLabel value="{!Quote.Discount}"/>
+</apex:pageBlockSectionItem><br/> 
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="Total Price:"/>
+<apex:OutputLabel value="{!Quote.TotalPrice}"/>
+</apex:pageBlockSectionItem><br/> 
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="Grand Total:"/>
+<apex:OutputLabel value="{!Quote.GrandTotal}"/>
+</apex:pageBlockSectionItem><br/> 
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+<br/> <br/> <br/> <br/> <br/>
+
+<apex:pageBlock > 
+<apex:pageBlockSection columns="2"  title="Quote Acceptance Information">
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="Signature:"/>______________________
+</apex:pageBlockSectionItem><br/> 
+<br/>  
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="Name:"/>______________________
+</apex:pageBlockSectionItem><br/> 
+<br/> 
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="Title:"/>______________________
+</apex:pageBlockSectionItem><br/>  
+<br/> 
+<apex:pageBlockSectionItem >
+<apex:outputLabel value="Date"/>_______________________
+</apex:pageBlockSectionItem><br/>  
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+   
+
+</apex:page>

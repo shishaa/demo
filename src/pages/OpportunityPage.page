@@ -1,0 +1,15 @@
+<apex:page standardController="Opportunity" extensions="OpportunityClass" tabStyle="Account" sidebar="false" >
+<apex:form >
+ <apex:pageBlock >
+ <apex:pageBlockTable value="{!accounts}" var="acc">
+ <apex:column title="{!$Label.account_stage}" value="{!acc.StageName}"/>
+
+ <apex:column title="{!$Label.Money}" value="{!acc.Amount}"/>
+ <apex:column title="{!$Label.Name}" value="{!acc.AccountId}"/>
+ <apex:column title="{!$Label.Dateclose}" value="{!acc.CloseDate}"/>
+ </apex:pageBlockTable>
+ </apex:pageBlock>
+</apex:form>
+
+
+</apex:page>

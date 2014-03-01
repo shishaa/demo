@@ -1,0 +1,25 @@
+<apex:page controller="myCustomOpportunityController">
+          <apex:form >
+                   <apex:selectList value="{!AccFilterId}" size="1" id="filterMenu">
+     		                       <apex:selectOptions value="{!AccountExistingViews}"></apex:selectOptions> 
+     		                     
+   	               </apex:selectList>
+                    <apex:pageBlock tabStyle="Account" title="Page-{!pageNumber}">
+                          <apex:pageBlockSection >
+                                    <apex:pageBlockTable value="{!opportunities}" var="o" id="acc">
+                                              <apex:column value="{!o.Name}"/>
+                                            <!-- <apex:column value="{!o.CloseDate}"/>--> 
+                                    </apex:pageBlockTable>
+                          </apex:pageBlockSection>
+                          <apex:pageBlockButtons >                                           
+                                    <apex:commandButton action="{!firstPage}" value="|<<" reRender="acc"/>                                             
+                                    <apex:commandButton action="{!next}" value=">" reRender="acc"/>
+                                    <apex:commandButton action="{!prev}" value="<" reRender="acc"/>
+                                    <apex:commandButton action="{!lastPage}" value=">>|" reRender="acc"/>
+                                    <!-- <apex:commandButton action="{!save}" value="Save" reRender="acc"/> -->
+                                    <apex:commandButton action="{!cancel}" value="Cancel" reRender="acc"/>
+                          </apex:pageBlockButtons>
+                                 
+                  </apex:pageBlock>
+          </apex:form> 
+</apex:page>

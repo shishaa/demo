@@ -1,0 +1,63 @@
+<apex:page controller="SearchPageController" tabStyle="Account" sidebar="false">
+
+  <apex:form > 
+   <apex:pageMessages id="searchTextError" />
+   
+    
+    <apex:pageBlock >
+  
+         <apex:pageBlockSection >
+            <apex:pageBlockSectionItem >
+              
+               <apex:panelGroup >
+                  <apex:inputText id="searchText" value="{!searchText}"/>
+                  <apex:commandButton value="SEARCH" action="{!salesforceSearch}"  />
+               </apex:panelGroup>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+       
+    </apex:pageBlock>
+    
+
+    
+  <apex:pageBlock title="Accounts"  rendered="{!showAccount}">
+       <apex:pageblockTable value="{!accounts }" var="acc" >
+          <apex:column value="{!acc.Name}"/>
+          <apex:column value="{!acc.First_Name__c}"/>
+          <apex:column value="{!acc.Last_Name__c}"/>
+         
+       </apex:pageblockTable>
+    </apex:pageBlock>
+
+
+
+ <apex:pageBlock title="Contacts" rendered="{!showContact}">
+
+    <apex:pageblockTable value="{!contacts}" var="co"  >
+     <apex:column value="{!co.Name}"/>
+          
+          </apex:pageblockTable>
+
+      
+ </apex:pageBlock>
+ 
+ <apex:pageBlock title="Leads" rendered="{!showLead}">
+  
+    <apex:pageblockTable value="{!leads}" var="le" >
+      <apex:column value="{!le.Name}"/>
+     
+    </apex:pageblockTable>
+    
+ </apex:pageBlock>
+ 
+ 
+ <apex:pageBlock title="Opportunities" rendered="{!showOpp}">
+    <apex:pageblockTable value="{!opportunities}" var="opp" >
+      <apex:column value="{!opp.Name}"/>
+   
+ </apex:pageblockTable>
+ </apex:pageBlock>
+ 
+  </apex:form>
+  
+</apex:page>

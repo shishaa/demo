@@ -1,0 +1,99 @@
+<apex:page controller="myLineSearchExtension"  sideBar="false" standardStylesheets="false" >
+  <apex:outputPanel id="block">
+   <apex:pagemessages id="googleSearchError" />
+  </apex:outputPanel>
+ 
+
+<style>
+   .sizeClass{
+  font-size:22px;
+   }
+</style>
+ <style>
+   .size2Class{
+  font-size:20px;
+  
+   }
+ </style>
+ <style>
+    .colorClass{
+   background-color:white;
+   }
+  </style>
+ <script>
+
+</script>
+ <style type="text/css">
+        .myClass { width: 400px; }
+    </style>
+<style>
+input.buttonClass {
+background-image:url('/resource/1390287761000/GoogleLogo');
+width:85px;
+Height:25px;
+<!--background-color:Blue;-->
+}
+</style>
+<style>
+.labelClass {
+background-image:url('resource/1390287761000/GoogleLogo');
+
+}
+</style>
+
+<apex:form >
+  
+<apex:pageBlock id="gs">
+
+<apex:panelGroup >
+
+<apex:outputLabel style="color:Brown;font-size:18px" styleClass="labelClass" >Google Custom Search  </apex:outputLabel>&nbsp;&nbsp;&nbsp;
+<apex:inputText id="googleSearch" value="{!googleSearch}" styleClass="myClass"/>&nbsp;
+<apex:commandButton value="" status="status" action="{!historySearch}" styleClass="buttonClass"/>
+<br/><br/>
+
+<!-- <apex:actionStatus startText="redirecting..."  id="stat"/> -->
+<apex:outputpanel >
+  <apex:actionstatus id="status">
+    <apex:facet name="start"> 
+       <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb;
+                       height: 100%;opacity:0.65;width:100%;"> 
+         <div class="waitingHolder" style="top: 74.2px; width: 91px;">
+           <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+            <span class="waitingDescription">Loading...</span>
+             </div>
+           </div>
+          </apex:facet>
+        </apex:actionstatus>
+    </apex:outputpanel>
+</apex:panelGroup>
+
+
+
+<apex:pageBlockSection id="hResults" columns="1">
+
+<apex:pageBlockSectionItem dataStyleClass="colorClass" >
+<apex:dataTable value="{!theResults}" var="r" >
+
+
+<apex:column >
+<apex:facet name="header"></apex:facet> 
+<apex:outputLink value="https://www.google.com/search?q={!googleSearch}" style="color:Blue">
+<apex:outputText value="{!r.Title__c}" styleClass="sizeClass"  />
+</apex:outputLink><br/>
+<apex:outputLink value="https://www.google.com/search?q={!googleSearch}" style="color:Green">
+<apex:outputText value="{!r.Link__c}" styleClass="size2Class"  />
+</apex:outputLink><br/>
+<apex:outputText value="{!r.Result_Description__c }"  /><br/><br/>
+</apex:column>
+
+
+ </apex:dataTable>
+
+ </apex:pageBlockSectionItem>
+
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+  
+</apex:page>

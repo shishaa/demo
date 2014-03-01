@@ -1,0 +1,13 @@
+<apex:page standardController="Position__c">
+      <b>Hello {!$User.FirstName}!</b><br/><br/>
+      <apex:form >
+            <apex:pageBlock tabStyle="job_posting__c" title="Quick Change">
+                  <apex:pageBlockSection columns="3" >
+                        <apex:inputField value="{!Position__c.Name}"/>
+                        <apex:inputField value="{!Position__c.Status__c}"/>
+                        <apex:commandButton value="Update" action="{!Save}"/>
+                  </apex:pageBlockSection>
+            </apex:pageBlock>
+      </apex:form>
+      <apex:detail relatedList="true" />
+</apex:page>

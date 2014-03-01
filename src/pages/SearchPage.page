@@ -1,0 +1,36 @@
+<apex:page controller="SearchPage" tabStyle="Account" sidebar="false">
+      <apex:form >
+            <apex:inputText value="{!SearchText}" id="SearchText"/>
+            <apex:commandButton value="Search" action="{!SearchPages}" reRender="Block"/>
+
+            <apex:pageBlock mode="edit" id="Block">
+
+                 <apex:pageBlockSection title="Accounts"  rendered="{!ac}">
+                       <apex:pageBlockTable value="{!Accounts}" var="account">
+                             <apex:Column value="{!account.Name}"/>
+                             <apex:Column value="{!account.First_Name__c}"/>
+                             <apex:Column value="{!account.Last_Name__c}"/>
+                       </apex:pageBlockTable>
+                </apex:pageBlockSection>
+
+               <apex:pageBlockSection title="Contact" rendered="{!con}">
+                    <apex:pageBlockTable value="{!Contacts}" var="contact">
+                         <apex:Column value="{!contact.Name}"/>
+                    </apex:pageBlockTable> 
+               </apex:pageBlockSection>
+
+               <apex:pageBlockSection title="Opportunity" rendered="{!opp}">
+                   <apex:pageBlockTable value="{!Opportunities}" var="opportunity">
+                         <apex:Column value="{!opportunity.Name}"/>
+                   </apex:pageBlockTable>
+              </apex:pageBlockSection>
+
+              <apex:pageBlockSection title="Lead" rendered="{!le}">
+                  <apex:pageBlockTable value="{!Leads}" var="lead">
+                        <apex:Column value="{!lead.Name}"/>
+                  </apex:pageBlockTable>
+              </apex:pageBlockSection>
+
+         </apex:pageBlock>
+    </apex:form>
+</apex:page>

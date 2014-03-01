@@ -1,0 +1,31 @@
+<apex:page standardController="Campaign" extensions="Campaignclass" sidebar="false" >
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockSection title="User Driven Campaigns">
+<apex:selectList value="{!campaigns}" multiselect="false" size="1">
+<apex:selectOptions value="{!items}">
+</apex:selectOptions>
+</apex:selectList>
+<apex:commandButton value="Go" action="{!Go}"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection >
+<apex:pageBlockTable value="{!cam}" var="it" >
+
+ <apex:column >
+        <apex:commandLink value="{!it.Name}" action="{!Redirect}">
+          <apex:param name="Did" value="{!it.Id}"/>
+        </apex:commandLink>
+        </apex:column>
+<apex:column value="{!it.Status}"/>
+<apex:column value="{!it.Type}"/>
+<apex:column value="{!it.StartDate}"/>
+
+</apex:pageBlockTable>
+</apex:pageBlockSection>
+<apex:panelGrid columns="2">
+<apex:commandLink action="{!previous}">Previous</apex:commandlink>
+<apex:commandLink action="{!next}">Next</apex:commandlink>
+</apex:panelGrid>
+</apex:pageBlock>
+ </apex:form> 
+</apex:page>

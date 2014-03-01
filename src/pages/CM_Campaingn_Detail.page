@@ -1,0 +1,26 @@
+<apex:page StandardController="Campaign" extensions="CampaignController">
+
+<h1>Campaign Detail Page</h1>
+
+<apex:pageBlock >
+  
+    <apex:outputLink value="/{!campaign.Id}/e?id={!campaign.Id}">Edit | </apex:outputLink>
+    <apex:outputLink value="{!URLFOR($Action.Campaign.Clone, campaign.Id)}">Copy | </apex:outputLink>
+    <apex:outputLink value="/home/home.jsp"> Manage Members | </apex:outputLink> 
+    <apex:outputLink value="">Action</apex:outputLink>
+    
+    <apex:pageBlockSection Title="Campaign Information" >
+    <apex:outputField value="{!campaign.OwnerId}" /> 
+    <apex:outputField value="{!campaign.Name}" />  
+    <apex:outputField value="{!campaign.StartDate}" />  
+    <apex:outputField value="{!campaign.EndDate}" />
+    <apex:outputField value="{!campaign.CreatedById}" />
+    <apex:outputField value="{!campaign.LastModifiedById}" />
+    <apex:outputField value="{!campaign.Description}" />
+    <apex:outputField value="{!campaign.NumberSent}" />
+    <apex:outputField value="{!campaign.Type}" />
+    <apex:outputField value="{!campaign.Status}" />
+    <apex:outputField value="{!campaign.ParentId}" />
+  </apex:pageBlockSection>
+</apex:pageBlock>
+</apex:page>
